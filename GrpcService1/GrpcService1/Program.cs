@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.WebHost.ConfigureKestrel(options =>
 {
+    options.ListenAnyIP(8080);
     //options.ListenAnyIP(443, listenOptions =>
     //{
     //    listenOptions.UseHttps();
@@ -11,7 +12,6 @@ builder.WebHost.ConfigureKestrel(options =>
     options.ListenAnyIP(8585, listenOptions =>
     {        
         listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
-        listenOptions.UseHttps();
     });
 });
 
